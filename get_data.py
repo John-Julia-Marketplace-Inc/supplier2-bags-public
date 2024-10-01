@@ -605,21 +605,21 @@ if __name__ == "__main__":
                    "Women's Bags", "Women's Bags", "Women's Bags", "Women's Bags", "Women's Bags", "Women's Bags", "Women's Bags"]
 
     urls = [
-        f'{SUPPLIER_URL}/vip2_en/women/accessories/wallets.html',
+        f'{SUPPLIER_URL}/women/accessories/wallets.html',
         
-        f'{SUPPLIER_URL}/vip2_en/men/accessories/wallets.html',
-        f'{SUPPLIER_URL}/vip2_en/men/accessories/wallets.html',
+        f'{SUPPLIER_URL}/men/accessories/wallets.html',
+        f'{SUPPLIER_URL}/men/accessories/wallets.html',
         
-        f'{SUPPLIER_URL}/vip2_en/men/bags.html',
-        f'{SUPPLIER_URL}/vip2_en/men/bags.html',
+        f'{SUPPLIER_URL}/men/bags.html',
+        f'{SUPPLIER_URL}/men/bags.html',
         
-        f'{SUPPLIER_URL}/vip2_en/women/bags.html',
-        f'{SUPPLIER_URL}/vip2_en/women/bags.html',
-        f'{SUPPLIER_URL}/vip2_en/women/bags.html',
-        f'{SUPPLIER_URL}/vip2_en/women/bags.html',
-        f'{SUPPLIER_URL}/vip2_en/women/bags.html',
-        f'{SUPPLIER_URL}/vip2_en/women/bags.html',
-        f'{SUPPLIER_URL}/vip2_en/women/bags.html',
+        f'{SUPPLIER_URL}/women/bags.html',
+        f'{SUPPLIER_URL}/women/bags.html',
+        f'{SUPPLIER_URL}/women/bags.html',
+        f'{SUPPLIER_URL}/women/bags.html',
+        f'{SUPPLIER_URL}/women/bags.html',
+        f'{SUPPLIER_URL}/women/bags.html',
+        f'{SUPPLIER_URL}/women/bags.html',
     ]
     
     pages = [
