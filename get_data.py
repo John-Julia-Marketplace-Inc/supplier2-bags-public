@@ -251,63 +251,13 @@ def get_info(url, collection, page_range):
         driver.get(url)
         time.sleep(3)
 
-        # # Login on the first page
-        # username_field = driver.find_element(By.NAME, 'login[username]')
-        # password_field = driver.find_element(By.NAME, 'login[password]')
-        # username_field.send_keys(LOGIN)
-        # password_field.send_keys(PASSWORD)
-        # password_field.send_keys(Keys.RETURN)
-        # time.sleep(2)
-
-        # print('Logged in successfully!')
-        
-        try:
-            options = webdriver.ChromeOptions()
-            options.add_argument("--headless=new")
-            driver = webdriver.Chrome(options=options)
-            driver.get(url)
-            time.sleep(3)
-
-            # Retry mechanism for login with visibility check for the product list
-            max_retries = 3
-            for attempt in range(max_retries):
-                try:
-                    # Locate the login fields
-                    username_field = WebDriverWait(driver, 10).until(
-                        EC.presence_of_element_located((By.NAME, 'login[username]'))
-                    )
-                    password_field = WebDriverWait(driver, 10).until(
-                        EC.presence_of_element_located((By.NAME, 'login[password]'))
-                    )
-
-                    # Input credentials
-                    username_field.clear()
-                    password_field.clear()
-                    username_field.send_keys(LOGIN)
-                    password_field.send_keys(PASSWORD)
-                    password_field.send_keys(Keys.RETURN)
-                    time.sleep(2)
-
-                    # Check for visibility of the product list element
-                    product_list_visible = WebDriverWait(driver, 5).until(
-                        EC.visibility_of_element_located((By.CSS_SELECTOR, 'ol.products.list.items.product-items.row'))
-                    )
-                    
-                    if product_list_visible:
-                        print('Product list is visible, login successful!')
-                        break
-
-                    # If the element is not visible, raise an exception to retry
-                    raise Exception("Product list not visible, retrying login...")
-                except (NoSuchElementException, TimeoutException, Exception) as login_error:
-                    print(f"Login attempt {attempt + 1} failed: {login_error}")
-                    if attempt == max_retries - 1:
-                        print(f"All {max_retries} login attempts failed.")
-                        driver.quit()
-                        raise Exception("Failed to log in and find product list after 3 attempts.")
-                    time.sleep(2)  # Short wait before retrying
-        except Exception as e:
-            print(f"Error in get_info: {e}")
+        # Login on the first page
+        username_field = driver.find_element(By.NAME, 'login[username]')
+        password_field = driver.find_element(By.NAME, 'login[password]')
+        username_field.send_keys(LOGIN)
+        password_field.send_keys(PASSWORD)
+        password_field.send_keys(Keys.RETURN)
+        time.sleep(2)
         
         
         # Handle different page_range inputs: 'all', '18', '1,6'
