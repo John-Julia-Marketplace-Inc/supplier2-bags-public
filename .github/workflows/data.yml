@@ -18,6 +18,9 @@ jobs:
         run: |
           git clone https://${{ secrets.PRIVATE_REPO_PAT }}@github.com/${{ secrets.PRIVATE_REPO_URL}}.git private_repo
     
+      - name: List files in Private Repository
+        run: ls -la private_repo
+        
       - name: Set up environment and run script with secrets
         run: |
             echo "Setting up environment variables"
