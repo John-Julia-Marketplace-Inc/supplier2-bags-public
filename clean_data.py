@@ -284,3 +284,6 @@ def final_prep():
     all_skus.dropna().to_csv('private_repo/clean_data/existing_skus.csv', index=False)
     
     
+    data = pd.read_csv('private_repo/clean_data/products_slower.csv')
+    data[data['Stock Status'] == 'OUT OF STOCK']['Product Code'].to_csv('private_repo/clean_data/out_of_stock.csv', index=False)
+    
