@@ -253,7 +253,7 @@ def final_prep():
     
     out_of_stock = data[data['Stock Status'] == 'OUT OF STOCK']
     print('Number of out of stock products:', out_of_stock)
-    out_of_stock.to_csv('private_repo/clean_data/')
+    out_of_stock.to_csv('private_repo/clean_data/out_of_stock.csv')
     
     data.drop(index=out_of_stock.index, inplace=True)
     data = data[data['Price'] != 'Price']
