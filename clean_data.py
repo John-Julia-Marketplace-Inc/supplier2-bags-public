@@ -250,6 +250,12 @@ def get_products(link):
 
 def final_prep():
     data = get_products('private_repo/clean_data/products_slower.csv')
+    
+    out_of_stock = data[data['Stock Status'] == 'OUT OF STOCK']
+    print('Number of out of stock products:', out_of_stock)
+    out_of_stock.to_csv('private_repo/clean_data/')
+    
+    data.drop(index=out_of_stock.index, inplace=True)
     data = data[data['Price'] != 'Price']
     
     # update all the products
@@ -263,6 +269,8 @@ def final_prep():
     data = data[data['Compare At Price'] > 0]
     # data = data[data['Country'] != '-']
     data = data[data['Product Code'].str.len() > 0]
+    
+    non_existing_skus[~non_existing_skus['Variant SKU'].isin(data['Product Code'])].to_csv('private_repo/clean_data/zero_inventory.csv', index=False)
     
     # drop invalid entries
     print('Before removing invalid dimensions:', len(data))
