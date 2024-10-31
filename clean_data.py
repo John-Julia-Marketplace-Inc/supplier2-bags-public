@@ -180,7 +180,7 @@ def get_products(link):
     data = pd.read_csv(link)
     
     # Filter for rows with missing dimensions
-    missing_dims = data[(data['Height'].isna()) | (data['Width'].isna())].copy()  # Use .copy() to avoid SettingWithCopyWarning
+    missing_dims = data[(data['Height'].isna()) | (data['Width'].isna())].copy() 
 
     # Process missing dimensions with .loc[]
     missing_dims.loc[:, 'Description'] = missing_dims['Description'].apply(lambda x: x.replace('made', ' made').replace('\n', ' '))
@@ -198,6 +198,8 @@ def get_products(link):
     # Update fabric and color in original data
     data.loc[missing_dims.index, 'Fabric'] = missing_dims['Fabric']
     data.loc[missing_dims.index, 'Color'] = missing_dims['Color'].apply(lambda x: x.split('\n')[0] if isinstance(x, str) and '\n' in x else x)
+    
+    data['Color'] = data['Color'].apply(lambda x: x.split('\r\n')[0] if not pd.isna(x) else x)
     
     data['Product Name'] = data['Product Name'].apply(lambda x: x.title().replace('\n', '-'))
     data['Description'] = data['Description'].apply(lambda x: x.replace('made', ' made ').replace('\n', ' ').strip())
