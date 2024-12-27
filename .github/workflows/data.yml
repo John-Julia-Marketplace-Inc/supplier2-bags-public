@@ -74,3 +74,12 @@ jobs:
             -H "Authorization: Bearer ${{ secrets.PRIVATE_REPO_PAT }}" \
             https://api.github.com/repos/${{ secrets.PUBLIC_REPO_UPDATE }}/dispatches \
             -d '{"event_type": "shopify_steps_bags_all"}'
+
+  keepalive-job:
+        name: Keepalive Workflow
+        runs-on: ubuntu-latest
+        permissions:
+            actions: write
+        steps:
+        - uses: actions/checkout@v4
+        - uses: gautamkrishnar/keepalive-workflow@v2
