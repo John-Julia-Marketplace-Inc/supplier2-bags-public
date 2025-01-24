@@ -67,13 +67,13 @@ jobs:
             https://api.github.com/repos/${{ secrets.PRIVATE_REPO_URL }}/dispatches \
             -d '{"event_type": "shopify_steps_bags"}' 
       
-      - name: Trigger Public Repo Update Workflow
-        run: |
-            curl -X POST \
-            -H "Accept: application/vnd.github+json" \
-            -H "Authorization: Bearer ${{ secrets.PRIVATE_REPO_PAT }}" \
-            https://api.github.com/repos/${{ secrets.PUBLIC_REPO_UPDATE }}/dispatches \
-            -d '{"event_type": "shopify_steps_bags_all"}'
+      # - name: Trigger Public Repo Update Workflow
+      #   run: |
+      #       curl -X POST \
+      #       -H "Accept: application/vnd.github+json" \
+      #       -H "Authorization: Bearer ${{ secrets.PRIVATE_REPO_PAT }}" \
+      #       https://api.github.com/repos/${{ secrets.PUBLIC_REPO_UPDATE }}/dispatches \
+      #       -d '{"event_type": "shopify_steps_bags_all"}'
 
   keepalive-job:
         name: Keepalive Workflow
